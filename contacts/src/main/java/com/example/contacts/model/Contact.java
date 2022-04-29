@@ -22,7 +22,8 @@ import javax.persistence.Column;
 public abstract class Contact {
 		
 	public Contact() {
-		
+		this.createdAt = LocalDateTime.now();
+
 	}
 	
 	
@@ -31,7 +32,7 @@ public abstract class Contact {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		this.createdAt = LocalDateTime.now();
+		//this.createdAt = LocalDateTime.now();
 	}
 
 	@Id
@@ -46,7 +47,7 @@ public abstract class Contact {
 	private String phoneNumber;
 	
 	@Column(name = "createdAt")
-	private LocalDateTime createdAt;
+	private LocalDateTime createdAt = LocalDateTime.now();
 
 	public Long getId() {
 		return id;
