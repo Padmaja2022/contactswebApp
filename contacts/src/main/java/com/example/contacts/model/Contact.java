@@ -17,7 +17,7 @@ import javax.persistence.Column;
 
 @Entity
 @Table
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public abstract class Contact {
 		
@@ -31,7 +31,6 @@ public abstract class Contact {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		this.createdAt = LocalDateTime.now();
 	}
 
 	@Id
