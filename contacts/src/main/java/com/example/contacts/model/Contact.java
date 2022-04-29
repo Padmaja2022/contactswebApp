@@ -17,35 +17,35 @@ import javax.persistence.Column;
 
 @Entity
 @Table
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public abstract class Contact {
-		
+
 	public Contact() {
 		this.createdAt = LocalDateTime.now();
 
 	}
-	
-	
+
+
 	public Contact(Long id, String name, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		//this.createdAt = LocalDateTime.now();
+
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "contact_Id")
 		private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "phoneNumber")
 	private String phoneNumber;
-	
+
 	@Column(name = "createdAt")
 	private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -80,8 +80,8 @@ public abstract class Contact {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-	
-	
-	
+
+
+
 
 }
