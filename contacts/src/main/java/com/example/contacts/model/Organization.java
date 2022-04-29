@@ -18,7 +18,7 @@ public class Organization extends Contact{
 	}
 
 	public Organization(Long id, String name, String phoneNumber, Date createdAt, String website) {
-		super(id, name, phoneNumber, createdAt);
+		super(id, name, phoneNumber);
 		this.website = website;
 	}
 	

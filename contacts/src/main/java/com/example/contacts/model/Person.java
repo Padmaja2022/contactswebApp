@@ -12,10 +12,10 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class Person extends Contact{
 	
 	private String email;
-	private Date dob;
+	private String dob;
 	
-	public Person (Long id, String name, String phoneNumber, Date createdAt, String email, Date dob) {
-		super(id, name, phoneNumber, createdAt);
+	public Person (Long id, String name, String phoneNumber, Date createdAt, String email, String dob) {
+		super(id, name, phoneNumber);
 		this.email = email;
 		this.dob = dob;
 	}
@@ -32,11 +32,11 @@ public class Person extends Contact{
 		this.email = email;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
