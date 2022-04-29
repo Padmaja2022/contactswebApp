@@ -9,6 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,18 +20,18 @@ import javax.persistence.Column;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type")
 public abstract class Contact {
-	
+		
 	public Contact() {
 		
 	}
 	
 	
-	public Contact(Long id, String name, String phoneNumber, Date createdAt) {
+	public Contact(Long id, String name, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		this.createdAt = createdAt;
+		this.createdAt = LocalDateTime.now();
 	}
 
 	@Id
@@ -45,7 +46,7 @@ public abstract class Contact {
 	private String phoneNumber;
 	
 	@Column(name = "createdAt")
-	private Date createdAt;
+	private LocalDateTime createdAt;
 
 	public Long getId() {
 		return id;
@@ -71,11 +72,11 @@ public abstract class Contact {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 	
