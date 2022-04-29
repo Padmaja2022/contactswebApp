@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-//@PrimaryKeyJoinColumn(referencedColumnName="contact_id")
-@DiscriminatorValue(value = "Organization")
+@PrimaryKeyJoinColumn(referencedColumnName="contact_id")
+//@DiscriminatorValue(value = "Organization")
 public class Organization extends Contact{
 	
 	private String website;
