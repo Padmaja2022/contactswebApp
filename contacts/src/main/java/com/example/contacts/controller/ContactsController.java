@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.contacts.model.Contact;
+import com.example.contacts.model.Organization;
+import com.example.contacts.model.Person;
 import com.example.contacts.service.ContactsService;
 
 @Controller

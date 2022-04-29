@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.contacts.model.Contact;
+import com.example.contacts.model.Organization;
+import com.example.contacts.model.Person;
 import com.example.contacts.repository.ContactRepository;
 import com.example.contacts.repository.OrganizationRepository;
 import com.example.contacts.repository.PersonRepository;
@@ -27,7 +30,7 @@ public class ContactsService {
 
 	//GET PERSON BY ID - contacts/person/{pId}
 	public Person getPerson(Long id) {
-		return persRepo.findById(id);
+		return persRepo.findById(id).get();
 	}
 
 	//GET ORG - contacts/organization
@@ -37,7 +40,7 @@ public class ContactsService {
 	
 	//GET ORG BY ID - /contacts/organization/{oId}
 	public Organization getOrg(Long id) {
-		return orgRepo.findById(id);
+		return orgRepo.findById(id).get();
 	}
 	//GET ALL - /contacts
 	public List<Contact> getAllContacts() {
@@ -58,14 +61,21 @@ public class ContactsService {
 
 	//PUT PERSON - /contacts/person/{pId}
 	public List<Person> updatePerson(Long id, Person person) {
-		Person pers = persRepo.getById(id);
-		//@TODO - MAKE SURE TO ADD GETTER AND SETTER FOR UPDATES
+		Person pers = persRepo.findById(id).get();
+		pers.setName(person.getName());
+		pers.setPhoneNumber(person.getPhoneNumber());
+		pers.setEmail(person.getEmail());
+		pers.setDob(person.getDob());
+		return persRepo.findAll();
 	}
 
 	//PUT ORG - /contacts/organization/{oId}
 	public List<Organization> updateOrg(Long id, Organization org) {
-		Organization organization = orgRepo.getById(id);
-		//@TODO - MAKE SURE TO ADD GETTER AND SETTER FOR UPDATES
+		Organization organization = orgRepo.findById(id).get();
+		organization.setName(org.getName());
+		organization.setPhoneNumber(org.getPhoneNumber());
+		organization.setWebsite(org.getWebsite());
+		return orgRepo.findAll();
 	}
 
 	//DELETE PERSON -/contacts/person/{pId}
@@ -80,8 +90,9 @@ public class ContactsService {
 		return orgRepo.findAll();
 	}
 	//DELETE ALL - /contacts
-	public List<Contacts> deleteContacts() {
+	public List<Contact> deleteContacts() {
 		contactRepo.deleteAll();
+		return contactRepo.findAll();
 	}
 
 
