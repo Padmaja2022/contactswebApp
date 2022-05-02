@@ -1,14 +1,45 @@
+document.addEventListener("DOMContentLoaded", callAPI());
+
+  async function callAPI() {
+    const url = `http://localhost:8080/contacts`
+    const config = {
+
+        headers: {
+          'Access-Control-Allow-Origin' : '*'
+          }
+        }
+const res = await fetch(url, config)
+dataSQL = await 
+res.json()
+   console.log(dataSQL); 
+} 
+
+
+
+
+
+
+
+
 (function(global){
     var AddressBook = function(name,phone,email){
       return new AddressBook.init(name,phone,email);
     };
     
+   
+  
     AddressBook.prototype = {
       //default functions
-      data:[
-        //add data here
-      ],
-      searchResults:[
+      
+      data: {
+          dataSQL
+      }
+       
+       
+    
+      ,
+      searchResults:[ 
+          
         
       ],
       addNewContact:function(name,phone,email){
@@ -143,4 +174,4 @@
    document.getElementById('search-panel').style.display = 'none';
    document.getElementById('contact-panel').style.display = 'block';
  });
- 
+  
