@@ -1,7 +1,6 @@
 package com.example.contacts;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -28,8 +27,7 @@ class ContactsApplicationTests {
     PersonRepository person_repo;
 @Order(1)	
 	@Test
-	public void testCreate() {
-		
+	public void testCreate() {		
 		Person p= new Person();
 		p.setId(3L);
 		p.setName("Padmaja");		
@@ -46,20 +44,17 @@ class ContactsApplicationTests {
 	}
 @Order(3)
 @Test
-public void testSingleContact() {
-	
+public void testSingleContact() {	
 Person person =person_repo .findById(3L).get();
 	assertEquals("Padmaja", person.getName());
 				
 	}
 @Order(4)
 @Test
-public void testUpdate() {
-	
+public void testUpdate() {	
 	Person p = person_repo.findById(3L).get();
 	p.setPhoneNumber("123-457-8976");
-	person_repo.save(p);
-	System.out.println(p.getPhoneNumber());
+	person_repo.save(p);	
 	assertNotEquals(123-655-8976,person_repo.findById(3L).get().getPhoneNumber());
 		
 	
