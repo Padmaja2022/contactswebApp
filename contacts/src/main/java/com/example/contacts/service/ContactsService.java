@@ -1,5 +1,7 @@
 package com.example.contacts.service;
 
+
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +95,17 @@ public class ContactsService {
 	public List<Contact> deleteContacts() {
 		contactRepo.deleteAll();
 		return contactRepo.findAll();
+	}
+	
+	//SEARCH ALL -/search/name
+	public List<Contact> searchContacts(String name) {
+		List<Contact> queriedContact = new LinkedList<Contact>();
+		for(Contact contact : contactRepo.findAll()) {
+			if(contact.getName().contains(name)) {
+				queriedContact.add(contact);
+			}
+		}
+		return queriedContact;
 	}
 
 

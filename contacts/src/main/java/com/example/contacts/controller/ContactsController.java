@@ -86,4 +86,10 @@ public class ContactsController {
 	public List<Contact> deleteContactList() {
 		return contactService.deleteContacts();
 	}
+	
+	//SEARCH ALL - /search/name
+	@GetMapping("/search/{name}")
+	public List<Contact> searchContactList(@PathVariable (value = "name") String name) {
+		return contactService.searchContacts(name);
+	}
 }
